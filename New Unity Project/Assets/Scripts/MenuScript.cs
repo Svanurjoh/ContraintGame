@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuScript : MonoBehaviour {
+public class MenuScript : MonoBehaviour {
 
 	public void startGame() {
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
