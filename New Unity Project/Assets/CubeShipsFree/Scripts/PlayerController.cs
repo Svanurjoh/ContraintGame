@@ -30,8 +30,6 @@ namespace CubeSpaceFree
         void Start()
         {
             myRigidbody = GetComponent<Rigidbody>();
-			Debug.Log (boundary.xMax);
-			Debug.Log (boundary.xMin);
         }
 
         void FixedUpdate()
@@ -41,15 +39,14 @@ namespace CubeSpaceFree
             float moveVertical = Input.GetAxis("Vertical");
 
             // if keyboard direction key is pressed
-            if (moveHorizontal != 0 || moveVertical != 0)
+            if (moveHorizontal != 0)
             {
                 myRigidbody.velocity = new Vector3(moveHorizontal, 0.0f, moveVertical) * speed;
-
             }
             else
             {
 
-                Vector3 pos = Input.mousePosition;
+                /*Vector3 pos = Input.mousePosition;
 
                 pos.z = Camera.main.transform.position.y + 1;
                 pos = Camera.main.ScreenToWorldPoint(pos);
@@ -71,7 +68,7 @@ namespace CubeSpaceFree
                     " movement=" + movement);*/
 
                 //transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime* speed*2);
-                //myRigidbody.velocity = new Vector3(moveHorizontal, 0.0f, moveVertical) * speed;                    
+                //myRigidbody.velocity = new Vector3(moveHorizontal, 0.0f, moveVertical) * speed;     */               
 
             }
 
@@ -88,13 +85,10 @@ namespace CubeSpaceFree
 
         void Update()
         {
-            // Should we fire a bullet?
-            if ((Input.GetButton("Fire1") || Input.GetKeyDown(KeyCode.Space)) && Time.time > nextFire)
-            {
-                nextFire = Time.time + fireRate;
-                Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-                GetComponent<AudioSource>().Play();
-            }
+			if (Input.GetKeyDown ("space")) 
+			{
+				transform.Translate (Vector3.up * 260 * Time.deltaTime);
+			}
         }
     }
 }
