@@ -46,7 +46,7 @@ namespace CubeSpaceFree
                 (
                     Mathf.Clamp(myRigidbody.position.x, boundary.xMin, boundary.xMax),
                     0,
-                    Mathf.Clamp(myRigidbody.position.z, boundary.zMin-20, boundary.zMax+20)   // added offset so that DestroyByBoundary will destroy the object and not keep clamping the position
+                    Mathf.Clamp(myRigidbody.position.z, boundary.yMin-20, boundary.yMax+20)   // added offset so that DestroyByBoundary will destroy the object and not keep clamping the position
                 );
 
             myRigidbody.rotation = Quaternion.Euler(0, 0, myRigidbody.velocity.x * -tilt);
