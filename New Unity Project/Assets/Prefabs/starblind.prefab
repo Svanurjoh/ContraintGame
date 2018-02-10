@@ -37,9 +37,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4667708226310310}
   - component: {fileID: 114642405369392392}
+  - component: {fileID: 65890400612444400}
   m_Layer: 0
   m_Name: starblind
-  m_TagString: Untagged
+  m_TagString: Stars
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,14 +51,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1655219076584890}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 6.88, y: 6.84, z: 0}
+  m_LocalRotation: {x: 0.012315716, y: 0.6605496, z: 0.00078563025, w: 0.75068104}
+  m_LocalPosition: {x: 3.9780111, y: 0.12630415, z: 9.890923}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4692642105535866}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 1, y: 82.7, z: 1}
 --- !u!4 &4692642105535866
 Transform:
   m_ObjectHideFlags: 1
@@ -66,7 +67,7 @@ Transform:
   m_GameObject: {fileID: 1028229453532376}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1.0661728}
   m_Children: []
   m_Father: {fileID: 4667708226310310}
   m_RootOrder: 0
@@ -112,6 +113,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1028229453532376}
   m_Mesh: {fileID: 4300000, guid: 58c76f1a2cbf91140b55585504e0db4f, type: 3}
+--- !u!65 &65890400612444400
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1655219076584890}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0125299, y: 7.880477, z: 13.374651}
+  m_Center: {x: -5.4073753, y: 6.9566975, z: -0.03316711}
 --- !u!114 &114642405369392392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,3 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a0342eddc05bb4986b9b9792c80e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupEffect: {fileID: 1000013267560804, guid: 0ab55775e6458e944a57a5cf69c4b398,
+    type: 2}
