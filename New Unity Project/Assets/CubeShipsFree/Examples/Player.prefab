@@ -140,8 +140,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112598}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.52, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 496178}
@@ -422,7 +422,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!82 &8246070
 AudioSource:
@@ -516,17 +516,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  tilt: 3
+  tilt: 0
   boundary:
-    xMin: -4
-    xMax: 4
-    zMin: -4
-    zMax: 8
+    xMin: -1
+    xMax: 17
+    yMin: 0
+    yMax: 19
   shot: {fileID: 146826, guid: d2e2391c707e2c64ab8f0d6c4ba21450, type: 2}
   shotSpawn: {fileID: 496178}
-  myRigidbody: {fileID: 0}
+  myRigidbody: {fileID: 5400036}
   fireRate: 0.3
-  smoothing: 5
+  smoothing: 10
 --- !u!136 &13624146
 CapsuleCollider:
   m_ObjectHideFlags: 1
