@@ -518,9 +518,9 @@ MonoBehaviour:
   speed: 10
   tilt: 0
   boundary:
-    xMin: -1
-    xMax: 17
-    yMin: 0
+    xMin: 0.5
+    xMax: 18
+    yMin: 0.5
     yMax: 19
   shot: {fileID: 146826, guid: d2e2391c707e2c64ab8f0d6c4ba21450, type: 2}
   shotSpawn: {fileID: 496178}
