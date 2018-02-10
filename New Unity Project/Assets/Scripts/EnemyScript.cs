@@ -13,5 +13,17 @@ public class EnemyScript : MonoBehaviour {
 	void Update () {
 		float new_z = transform.position.z - 0.1f;
 		transform.position = new Vector3 (transform.position.x, transform.position.y, new_z);
+		if (transform.position.z < 0) {
+			Destroy(gameObject);
+		}
+	}
+
+	void OnTriggerEnter(Collider other) 
+	{
+		if(other.CompareTag("Player")) 
+		{
+			Debug.Log("Hit player");
+			//Destroy (other.gameObject);
+		}
 	}
 }
