@@ -138,3 +138,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupEffect: {fileID: 1000013267560804, guid: 0ab55775e6458e944a57a5cf69c4b398,
     type: 2}
+  GM: {fileID: 0}
+  speed: 0.1

@@ -138,3 +138,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyExplosion: {fileID: 1000010826686036, guid: 312430052df95c74dabbbf24c770df80,
     type: 2}
+  speed: 0.1

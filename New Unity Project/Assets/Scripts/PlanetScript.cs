@@ -11,7 +11,7 @@ public class PlanetScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        float new_z = transform.position.z - 0.01f;
+        float new_z = transform.position.z - 0.1f;
         if (transform.position.z > 40f)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, new_z);

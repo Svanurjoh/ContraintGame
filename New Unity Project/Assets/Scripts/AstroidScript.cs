@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AstroidScript : MonoBehaviour {
+public class AstroidScript : MonoBehaviour 
+{
+	private float speed;
+	private GameManagerScript GMS;
 
-	// Use this for initialization
-	void Start () {
-		
+	void Awake() {
+		GMS = GameObject.Find ("GameManager").GetComponent<GameManagerScript> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		float new_z = transform.position.z - 0.1f;
+		checkSpeed ();
+		float new_z = transform.position.z - speed;
 		transform.position = new Vector3 (transform.position.x, transform.position.y, new_z);
 		if (transform.position.z < 0) {
 			Destroy(gameObject);
@@ -26,5 +29,17 @@ public class AstroidScript : MonoBehaviour {
 			Debug.Log ("tri");
 			//Destroy (other.gameObject);
 		}
+	}
+
+	private void checkSpeed()
+	{
+		if (GMS.getStarsCollected () == 0) {
+			speed = 0.1f;
+		} else if (GMS.getStarsCollected () == 1) {
+			speed = 0.15f;
+		} else if (GMS.getStarsCollected () == 2) {
+			speed = 0.2f;
+		} else
+			speed = 0.3f;
 	}
 }

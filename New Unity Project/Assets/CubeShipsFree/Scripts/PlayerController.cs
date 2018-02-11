@@ -26,13 +26,17 @@ namespace CubeSpaceFree
 
         public float smoothing = 5;     // this value is used for smoothing ovement
         private Vector3 smoothDirection;// used to smooth out mouse and touch control
-		private bool jumping;
+		private bool isSButton;
+		private GameManagerScript GMS;
 
-        // Use this for initialization
+		void Awake() {
+			GMS = GameObject.Find ("GameManager").GetComponent<GameManagerScript> ();
+		}
+
         void Start()
         {
             myRigidbody = GetComponent<Rigidbody>();
-			jumping = false;
+			isSButton = true;
         }
 
         void FixedUpdate()
@@ -55,10 +59,16 @@ namespace CubeSpaceFree
 
         void Update()
         {
-			fire ();
+			checkHowShoots ();
+			if (isSButton) {
+				fireS ();
+			}
+			if (!isSButton) {
+				fireK ();
+			}
         }
 
-		private void fire()
+		private void fireS()
 		{
 			if (Input.GetButton ("Fire1") && Time.time > nextFire) 
 			{
@@ -66,6 +76,27 @@ namespace CubeSpaceFree
 				var bullet = Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 				GetComponent<AudioSource> ().Play ();
 				Destroy (bullet, 1.8f);
+			}
+		}
+
+		private void fireK()
+		{
+			if (Input.GetButton ("Fire2") && Time.time > nextFire) 
+			{
+				nextFire = Time.time + fireRate;
+				var bullet = Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+				GetComponent<AudioSource> ().Play ();
+				Destroy (bullet, 1.8f);
+			}
+		}
+
+		private void checkHowShoots()
+		{
+			if (GMS.getStarsCollected () % 2 == 0) {
+				isSButton = true;
+			}
+			if (GMS.getStarsCollected () % 2 != 0) {
+				isSButton = false;
 			}
 		}
     }
