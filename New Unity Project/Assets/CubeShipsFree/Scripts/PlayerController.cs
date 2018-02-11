@@ -22,7 +22,7 @@ namespace CubeSpaceFree
         public Rigidbody myRigidbody;   // reference to rigitbody
 		private float nextFire = 0;
 		private float timeSinceShotFired = 0;
-        public float fireRate = 10f;
+        public float fireRate = 1;
 
         public float smoothing = 5;     // this value is used for smoothing ovement
         private Vector3 smoothDirection;// used to smooth out mouse and touch control
@@ -60,7 +60,6 @@ namespace CubeSpaceFree
 
 		private void fire()
 		{
-			Debug.Log (Time.time + "  " + nextFire);
 			if (Input.GetButton ("Fire1") && Time.time > nextFire) 
 			{
 				nextFire = Time.time + fireRate;

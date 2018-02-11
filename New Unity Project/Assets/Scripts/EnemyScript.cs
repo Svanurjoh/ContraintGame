@@ -25,13 +25,15 @@ public class EnemyScript : MonoBehaviour {
 		if(other.CompareTag("Player")) 
 		{
 			Debug.Log("Hit player");
-			Instantiate (enemyExplosion, transform.position + new Vector3(0, 1.3f, 0), transform.rotation);
+			var exp = Instantiate (enemyExplosion, transform.position + new Vector3(0, 1.3f, 0), transform.rotation);
+			Destroy (exp, 1f);
 			Destroy (gameObject);
 		}
 		if(other.CompareTag("Bullet"))
 		{
 			Destroy (other.gameObject);
-			Instantiate (enemyExplosion, transform.position + new Vector3(0, 1.3f, 0), transform.rotation);
+			var exp = Instantiate (enemyExplosion, transform.position + new Vector3(0, 1.3f, 0), transform.rotation);
+			Destroy (exp, 1f);
 			Destroy(gameObject);
 		}
 	}
