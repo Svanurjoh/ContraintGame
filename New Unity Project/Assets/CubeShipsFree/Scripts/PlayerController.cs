@@ -20,7 +20,9 @@ namespace CubeSpaceFree
         public GameObject shot;         // bullet prefab
         public Transform shotSpawn;     // the turret (bullet spawn location)
         public Rigidbody myRigidbody;   // reference to rigitbody
-        public float fireRate = 0.5f;
+		private float nextFire = 0;
+		private float timeSinceShotFired = 0;
+        public float fireRate = 10f;
 
         public float smoothing = 5;     // this value is used for smoothing ovement
         private Vector3 smoothDirection;// used to smooth out mouse and touch control
@@ -53,6 +55,19 @@ namespace CubeSpaceFree
 
         void Update()
         {
+			fire ();
         }
+
+		private void fire()
+		{
+			Debug.Log (Time.time + "  " + nextFire);
+			if (Input.GetButton ("Fire1") && Time.time > nextFire) 
+			{
+				nextFire = Time.time + fireRate;
+				var bullet = Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+				GetComponent<AudioSource> ().Play ();
+				Destroy (bullet, 1.8f);
+			}
+		}
     }
 }

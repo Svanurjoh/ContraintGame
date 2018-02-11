@@ -5,7 +5,6 @@ namespace CubeSpaceFree
 {
     public class Mover : MonoBehaviour
     {
-
         public float speed;
 
         // Use this for initialization
@@ -17,7 +16,6 @@ namespace CubeSpaceFree
         // Update is called once per frame
         void Update()
         {
-
         }
     }
 }

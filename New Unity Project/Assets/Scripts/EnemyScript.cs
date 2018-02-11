@@ -15,7 +15,7 @@ public class EnemyScript : MonoBehaviour {
 	void Update () {
 		float new_z = transform.position.z - 0.1f;
 		transform.position = new Vector3 (transform.position.x, transform.position.y, new_z);
-		if (transform.position.z < -10) {
+		if (transform.position.z < 0) {
 			Destroy(gameObject);
 		}
 	}
@@ -26,7 +26,13 @@ public class EnemyScript : MonoBehaviour {
 		{
 			Debug.Log("Hit player");
 			Instantiate (enemyExplosion, transform.position + new Vector3(0, 1.3f, 0), transform.rotation);
-			//Destroy (other.gameObject);
+			Destroy (gameObject);
+		}
+		if(other.CompareTag("Bullet"))
+		{
+			Destroy (other.gameObject);
+			Instantiate (enemyExplosion, transform.position + new Vector3(0, 1.3f, 0), transform.rotation);
+			Destroy(gameObject);
 		}
 	}
 }
