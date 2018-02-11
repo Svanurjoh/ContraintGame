@@ -20,9 +20,10 @@ public class AstroidScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) 
 	{
-		if(other.CompareTag("Player")) 
+		if(other.gameObject.tag == "enemy") 
 		{
-			Debug.Log("Hit player");
+			Destroy (gameObject);
+			Debug.Log ("tri");
 			//Destroy (other.gameObject);
 		}
 	}

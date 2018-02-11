@@ -7,11 +7,13 @@ public class GameManagerScript : MonoBehaviour
 	public GameObject astroidPrefab;
 	public GameObject starPrefab;
 	public GameObject enemyPrefab;
+	public GameObject[] spawnPoints;
+	private GameObject[] tempSpawns;
 
 	private float spawnTimer = 0f;
 	private int spawnCounter = 0;
-	private int enemySpawnCount = 0;
-	private int astroidSpawnCount = 0;
+	private int activeSpawns = 4;
+	private int spawnCooldown = 3;
 
 	private ArrayList points;
 	private bool shouldSpawn;
@@ -24,43 +26,39 @@ public class GameManagerScript : MonoBehaviour
 
 	void Update () 
 	{
+		tempSpawns = spawnPoints;
 		if (Time.time > spawnTimer) {
-			/*for (int i = 0; i < 3; i++) {
-				int randomX = Random.Range (0, 3);
-				int randomY = Random.Range (0, 3);
-				for (int j = 0; j < points.Count; j+=2) {
-					int x = points.IndexOf (j);
-					int y = points.IndexOf (j + 1);
-					Debug.Log (randomX + "  " + x + " " + points.Count);
-					Debug.Log (randomY + "  " + y + " " + points.Count + " " + j);
-					if (randomX - x <= 3 && randomX - x >= -3) {
-						if (randomY - y <= 3 && randomY - y >= -3) {
-							Debug.Log ("HERE");
-							shouldSpawn = false;
-						}
-					}
-					Debug.Log ("All checked");
+			for (int i = 0; i < 10; i++) {
+				int spawn = Random.Range (0, spawnPoints.Length);
+				int spawn1 = Random.Range(0, spawnPoints.Length);
+
+				if(!Physics.CheckSphere(spawnPoints [spawn].transform.position, 1)){
+					GameObject e = Instantiate (enemyPrefab, spawnPoints [spawn].transform.position, enemyPrefab.transform.rotation) as GameObject;
 				}
-				if (shouldSpawn) {
-					GameObject e6 = Instantiate (astroidPrefab, new Vector3 (randomX, randomY, 50), astroidPrefab.transform.rotation) as GameObject;
-					points.Add (randomX);
-					points.Add (randomY);
-					Debug.Log (randomX + "," + randomY + " " + " DRAWN " + spawnCounter++);
-					Debug.Log (points [0] + " " + points [1]);
-				} else {
-					shouldSpawn = true;
+				if(!Physics.CheckSphere(spawnPoints [spawn1].transform.position, 1)){
+					GameObject e = Instantiate (astroidPrefab, spawnPoints [spawn1].transform.position, astroidPrefab.transform.rotation) as GameObject;
 				}
-			}*/
-			spawnTimer = Time.time + 2.0f;
+				//GameObject a = Instantiate (astroidPrefab, spawnPoints [spawn1].transform.position, astroidPrefab.transform.rotation) as GameObject;
+			}
+			if (spawnCounter == 2) {
+				int starSpawn;
+				do {
+					starSpawn = Random.Range (0, spawnPoints.Length);
+				} while(Physics.CheckSphere (spawnPoints [starSpawn].transform.position, 2));
+				GameObject s = Instantiate (starPrefab, spawnPoints[starSpawn].transform.position, starPrefab.transform.rotation) as GameObject;
+				spawnCounter = 0;
+			}
+				
+			spawnTimer = Time.time + spawnCooldown;
 			spawnCounter += 1;
 			//points.Clear();
-			GameObject e1 = Instantiate (astroidPrefab, new Vector3 (0, 0, 50), astroidPrefab.transform.rotation) as GameObject;
-			GameObject e6 = Instantiate (astroidPrefab, new Vector3 (3.5f, 3.5f, 50), astroidPrefab.transform.rotation) as GameObject;
-			GameObject e2 = Instantiate (astroidPrefab, new Vector3 (7, 7, 50), astroidPrefab.transform.rotation) as GameObject;
-			GameObject e5 = Instantiate (astroidPrefab, new Vector3 (10.5f, 10.5f, 50), astroidPrefab.transform.rotation) as GameObject;
-			GameObject e3 = Instantiate (astroidPrefab, new Vector3 (14, 14, 50), astroidPrefab.transform.rotation) as GameObject;
-			GameObject e7 = Instantiate (astroidPrefab, new Vector3 (17.5f, 17.5f, 50), astroidPrefab.transform.rotation) as GameObject;
-			GameObject e9 = Instantiate (astroidPrefab, new Vector3 (0, 3.5f, 50), astroidPrefab.transform.rotation) as GameObject;
+
+			/*GameObject e6 = Instantiate (enemyPrefab, spawnPoints[1].transform.position, enemyPrefab.transform.rotation) as GameObject;
+			GameObject e2 = Instantiate (enemyPrefab, spawnPoints[2].transform.position, enemyPrefab.transform.rotation) as GameObject;
+			GameObject e5 = Instantiate (enemyPrefab, spawnPoints[3].transform.position, enemyPrefab.transform.rotation) as GameObject;
+			GameObject e3 = Instantiate (enemyPrefab, spawnPoints[4].transform.position, enemyPrefab.transform.rotation) as GameObject;
+			GameObject e7 = Instantiate (enemyPrefab, spawnPoints[5].transform.position, enemyPrefab.transform.rotation) as GameObject;
+			GameObject e9 = Instantiate (enemyPrefab, spawnPoints[24].transform.position, enemyPrefab.transform.rotation) as GameObject;*/
 		}
 	}
 }

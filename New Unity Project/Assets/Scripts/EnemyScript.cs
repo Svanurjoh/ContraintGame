@@ -15,7 +15,7 @@ public class EnemyScript : MonoBehaviour {
 	void Update () {
 		float new_z = transform.position.z - 0.1f;
 		transform.position = new Vector3 (transform.position.x, transform.position.y, new_z);
-		if (transform.position.z < 0) {
+		if (transform.position.z < -10) {
 			Destroy(gameObject);
 		}
 	}
