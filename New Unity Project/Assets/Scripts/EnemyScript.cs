@@ -23,7 +23,7 @@ public class EnemyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		checkSpeed ();
-		float new_z = transform.position.z - 0.1f;
+		float new_z = transform.position.z - speed;
 		transform.position = new Vector3 (transform.position.x, transform.position.y, new_z);
 		if (transform.position.z < 0) {
 			Destroy(gameObject);
@@ -40,7 +40,7 @@ public class EnemyScript : MonoBehaviour {
 			var exp = Instantiate (enemyExplosion, transform.position + new Vector3(0, 1.3f, 0), transform.rotation);
 			Destroy (exp, 1f);
 			Destroy (gameObject);
-			Destroy (other.gameObject);
+			other.gameObject.SetActive (false);
 		}
 		if(other.CompareTag("Bullet"))
 		{
