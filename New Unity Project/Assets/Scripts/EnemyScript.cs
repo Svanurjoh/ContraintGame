@@ -10,13 +10,19 @@ public class EnemyScript : MonoBehaviour {
 	public GameObject enemyExplosion;
 	public static int Score;
 	public static bool isDead = false;
+	private GameManagerScript GMS;
+	private float speed;
 
-	// Use this for initialization
+	void Awake() {
+		GMS = GameObject.Find ("GameManager").GetComponent<GameManagerScript> ();
+	}
+
 	void Start () {
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		checkSpeed ();
 		float new_z = transform.position.z - 0.1f;
 		transform.position = new Vector3 (transform.position.x, transform.position.y, new_z);
 		if (transform.position.z < 0) {
@@ -45,5 +51,17 @@ public class EnemyScript : MonoBehaviour {
 			Destroy (exp, 1f);
 			Destroy(gameObject);
 		}
+	}
+
+	private void checkSpeed()
+	{
+		if (GMS.getStarsCollected () == 0) {
+			speed = 0.1f;
+		} else if (GMS.getStarsCollected () == 1) {
+			speed = 0.15f;
+		} else if (GMS.getStarsCollected () == 2) {
+			speed = 0.2f;
+		} else
+			speed = 0.3f;
 	}
 }

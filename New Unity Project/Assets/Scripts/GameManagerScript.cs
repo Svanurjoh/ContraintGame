@@ -13,6 +13,7 @@ public class GameManagerScript : MonoBehaviour
 
 	public TextMeshProUGUI scoreText;
 	public TextMeshProUGUI dieText;
+	public int starsCollected;
 
 	private float spawnTimer = 0f;
 	private int spawnCounter = 0;
@@ -80,5 +81,16 @@ public class GameManagerScript : MonoBehaviour
 		EnemyScript.Score = 0;
 		EnemyScript.isDead = false;
 		SceneManager.LoadScene ("Arnar_");
+	}
+
+	public void starCollected()
+	{
+		starsCollected++;
+		Debug.Log (starsCollected);
+	}
+
+	public int getStarsCollected()
+	{
+		return starsCollected;
 	}
 }
