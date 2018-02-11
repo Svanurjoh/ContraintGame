@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour {
 
 	public void startGame() {
-		SceneManager.LoadScene ("Main");
+		SceneManager.LoadScene ("Arnar_");
 	}
 
 	public void quitGame() {

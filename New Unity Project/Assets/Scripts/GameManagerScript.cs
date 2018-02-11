@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManagerScript : MonoBehaviour 
 {
@@ -8,6 +10,9 @@ public class GameManagerScript : MonoBehaviour
 	public GameObject starPrefab;
 	public GameObject enemyPrefab;
 	public GameObject[] spawnPoints;
+
+	public TextMeshProUGUI scoreText;
+	public TextMeshProUGUI dieText;
 
 	private float spawnTimer = 0f;
 	private int spawnCounter = 0;
@@ -50,5 +55,30 @@ public class GameManagerScript : MonoBehaviour
 			spawnTimer = Time.time + spawnCooldown;
 			spawnCounter += 1;
 		}
+
+
+		scoreText.SetText ("Score: " + EnemyScript.Score.ToString ());
+		if (EnemyScript.isDead) {
+			
+			dieText.SetText ("Game over! \n press escape to quit \n spacebar/r to restart");
+
+			if (Input.GetKey (KeyCode.R)) {
+				reset ();
+			}
+			if (Input.GetKey (KeyCode.Space)) {
+				reset ();
+			}
+			if (Input.GetKey (KeyCode.Escape)) {
+				Application.Quit ();
+			}
+		} else {
+			dieText.SetText ("");
+		}
+	}
+
+	void reset() {
+		EnemyScript.Score = 0;
+		EnemyScript.isDead = false;
+		SceneManager.LoadScene ("Arnar_");
 	}
 }
