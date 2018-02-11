@@ -10,6 +10,8 @@ public class GameManagerScript : MonoBehaviour
 	public GameObject starPrefab;
 	public GameObject enemyPrefab;
 	public GameObject[] spawnPoints;
+	public GameObject player;
+	public GameObject planet;
 
 	public TextMeshProUGUI scoreText;
 	public TextMeshProUGUI dieText;
@@ -18,11 +20,12 @@ public class GameManagerScript : MonoBehaviour
 	private float spawnTimer = 0f;
 	private int spawnCounter = 0;
 	private int activeSpawns = 4;
-	private int spawnCooldown = 3;
+	private float spawnCooldown = 3;
 	private int maxSpawns = 5;
 
 	void Start () 
 	{
+		
 	}
 
 	void Update () 
@@ -40,47 +43,41 @@ public class GameManagerScript : MonoBehaviour
 				}
 			}
 
-			if (spawnCounter % 5 == 0) {
-				maxSpawns++;
-			}
-
-			if (spawnCounter == 10) {
+			if (spawnCounter == 5) {
 				int starSpawn;
 				do {
 					starSpawn = Random.Range (0, spawnPoints.Length);
 				} while(Physics.CheckSphere (spawnPoints [starSpawn].transform.position, 2));
 				GameObject s = Instantiate (starPrefab, spawnPoints[starSpawn].transform.position, starPrefab.transform.rotation) as GameObject;
 				spawnCounter = 0;
+				maxSpawns += 2;
+				spawnCooldown -= 0.2f;
 			}
 				
 			spawnTimer = Time.time + spawnCooldown;
 			spawnCounter += 1;
 		}
 
-
-		scoreText.SetText ("Score: " + EnemyScript.Score.ToString ());
-		if (EnemyScript.isDead) {
+		checkForInput ();
 			
+		scoreText.SetText ("Score: " + EnemyScript.Score.ToString ());
+		if (player.activeSelf == false) {
 			dieText.SetText ("Game over! \n press escape to quit \n spacebar/r to restart");
-
-			if (Input.GetKey (KeyCode.R)) {
-				reset ();
-			}
-			if (Input.GetKey (KeyCode.Space)) {
-				reset ();
-			}
-			if (Input.GetKey (KeyCode.Escape)) {
-				Application.Quit ();
-			}
 		} else {
 			dieText.SetText ("");
 		}
+		if (planet.transform.position.z <= 40) {
+			player.SetActive (false);
+			scoreText.SetText ("");
+			dieText.SetText ("YOU WON!!!! \n Your score : " + EnemyScript.Score.ToString () + "\n\n press escape to quit \n spacebar/r to restart");
+		}
+			
 	}
 
 	void reset() {
 		EnemyScript.Score = 0;
-		EnemyScript.isDead = false;
-		SceneManager.LoadScene ("Arnar_");
+		player.SetActive (true);
+		SceneManager.LoadScene ("Main");
 	}
 
 	public void starCollected()
@@ -92,5 +89,18 @@ public class GameManagerScript : MonoBehaviour
 	public int getStarsCollected()
 	{
 		return starsCollected;
+	}
+
+	public void checkForInput()
+	{
+		if (Input.GetKey (KeyCode.R)) {
+			reset ();
+		}
+		if (Input.GetKey (KeyCode.Space)) {
+			reset ();
+		}
+		if (Input.GetKey (KeyCode.Escape)) {
+			Application.Quit ();
+		}
 	}
 }

@@ -23,11 +23,14 @@ public class AstroidScript : MonoBehaviour
 
 	void OnTriggerEnter(Collider other) 
 	{
-		if(other.gameObject.tag == "enemy") 
+		if(other.gameObject.tag == "Player") 
 		{
-			Destroy (gameObject);
+			other.gameObject.SetActive (false);
 			Debug.Log ("tri");
 			//Destroy (other.gameObject);
+		}
+		if (other.gameObject.tag == "Bullet") {
+			Destroy (other.gameObject);
 		}
 	}
 
@@ -39,6 +42,8 @@ public class AstroidScript : MonoBehaviour
 			speed = 0.15f;
 		} else if (GMS.getStarsCollected () == 2) {
 			speed = 0.2f;
+		} else if (GMS.getStarsCollected () == 3) {
+			speed = 0.25f;
 		} else
 			speed = 0.3f;
 	}

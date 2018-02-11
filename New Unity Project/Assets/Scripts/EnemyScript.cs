@@ -61,6 +61,8 @@ public class EnemyScript : MonoBehaviour {
 			speed = 0.15f;
 		} else if (GMS.getStarsCollected () == 2) {
 			speed = 0.2f;
+		} else if (GMS.getStarsCollected () == 3) {
+			speed = 0.25f;
 		} else
 			speed = 0.3f;
 	}
