@@ -72,6 +72,7 @@ namespace CubeSpaceFree
 		{
 			if (Input.GetButton ("Fire1") && Time.time > nextFire) 
 			{
+				incrementScore ();
 				nextFire = Time.time + fireRate;
 				var bullet = Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 				GetComponent<AudioSource> ().Play ();
@@ -83,6 +84,7 @@ namespace CubeSpaceFree
 		{
 			if (Input.GetButton ("Fire2") && Time.time > nextFire) 
 			{
+				incrementScore ();
 				nextFire = Time.time + fireRate;
 				var bullet = Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 				GetComponent<AudioSource> ().Play ();
@@ -97,6 +99,13 @@ namespace CubeSpaceFree
 			}
 			if (GMS.getStarsCollected () % 2 != 0) {
 				isSButton = false;
+			}
+		}
+
+		private void incrementScore()
+		{
+			if (EnemyScript.Score > 0) {
+				EnemyScript.Score -= 1;
 			}
 		}
     }

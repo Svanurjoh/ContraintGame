@@ -6,6 +6,8 @@ public class AstroidScript : MonoBehaviour
 {
 	private float speed;
 	private GameManagerScript GMS;
+	public GameObject explosion;
+
 
 	void Awake() {
 		GMS = GameObject.Find ("GameManager").GetComponent<GameManagerScript> ();
@@ -25,6 +27,8 @@ public class AstroidScript : MonoBehaviour
 	{
 		if(other.gameObject.tag == "Player") 
 		{
+			var exp = Instantiate (explosion, transform.position + new Vector3(0, 1.3f, 0), transform.rotation);
+			Destroy (exp, 1f);
 			other.gameObject.SetActive (false);
 			Debug.Log ("tri");
 			//Destroy (other.gameObject);

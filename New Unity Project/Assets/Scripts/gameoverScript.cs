@@ -13,10 +13,10 @@ public class gameoverScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey (KeyCode.R)) {
-			SceneManager.LoadScene ("Arnar_");
+			SceneManager.LoadScene ("Main");
 		}
 		if (Input.GetKey (KeyCode.Space)) {
-			SceneManager.LoadScene ("Arnar_");
+			SceneManager.LoadScene ("Main");
 		}
 		if (Input.GetKey (KeyCode.Escape)) {
 			Application.Quit ();

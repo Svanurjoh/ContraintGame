@@ -23,6 +23,7 @@ public class StarsScript : MonoBehaviour {
 	{
 		if(other.CompareTag("Player")) 
 		{
+			EnemyScript.Score += 50;
 			Debug.Log("Star hit player");
 			Instantiate (pickupEffect, transform.position + new Vector3(0, 1.3f, 0), transform.rotation);
 			GMS.starCollected ();

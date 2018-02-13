@@ -8,6 +8,8 @@ using TMPro;
 public class EnemyScript : MonoBehaviour {
 
 	public GameObject enemyExplosion;
+	public GameObject shipExplosion;
+
 	public static int Score;
 	public static bool isDead = false;
 	private GameManagerScript GMS;
@@ -39,6 +41,8 @@ public class EnemyScript : MonoBehaviour {
 			Debug.Log("Hit player");
 			var exp = Instantiate (enemyExplosion, transform.position + new Vector3(0, 1.3f, 0), transform.rotation);
 			Destroy (exp, 1f);
+			var shipExp = Instantiate (shipExplosion, transform.position, transform.rotation);
+			Destroy (shipExp, 1f);
 			Destroy (gameObject);
 			other.gameObject.SetActive (false);
 		}
