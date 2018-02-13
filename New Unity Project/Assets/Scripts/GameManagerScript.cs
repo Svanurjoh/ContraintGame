@@ -32,18 +32,20 @@ public class GameManagerScript : MonoBehaviour
 	void Update () 
 	{
 		if (Time.time > spawnTimer) {
-			for (int i = 0; i < maxSpawns; i++) {
-				int spawn = Random.Range (0, spawnPoints.Length);
-				int spawn1 = Random.Range(0, spawnPoints.Length);
+			if (planet.transform.position.z > 40) {
+				for (int i = 0; i < maxSpawns; i++) {
+					int spawn = Random.Range (0, spawnPoints.Length);
+					int spawn1 = Random.Range(0, spawnPoints.Length);
 
-				if(!Physics.CheckSphere(spawnPoints [spawn].transform.position, 1)){
-					GameObject e = Instantiate (enemyPrefab, spawnPoints [spawn].transform.position, enemyPrefab.transform.rotation) as GameObject;
-				}
-				if(!Physics.CheckSphere(spawnPoints [spawn1].transform.position, 1)){
-					GameObject e = Instantiate (astroidPrefab, spawnPoints [spawn1].transform.position, astroidPrefab.transform.rotation) as GameObject;
+					if(!Physics.CheckSphere(spawnPoints [spawn].transform.position, 1)){
+						GameObject e = Instantiate (enemyPrefab, spawnPoints [spawn].transform.position, enemyPrefab.transform.rotation) as GameObject;
+					}
+					if(!Physics.CheckSphere(spawnPoints [spawn1].transform.position, 1)){
+						GameObject e = Instantiate (astroidPrefab, spawnPoints [spawn1].transform.position, astroidPrefab.transform.rotation) as GameObject;
+					}
 				}
 			}
-
+				
 			if (spawnCounter == 5) {
 				int starSpawn;
 				do {
