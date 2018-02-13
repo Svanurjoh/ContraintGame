@@ -80,7 +80,7 @@ namespace CubeSpaceFree
 				nextFire = Time.time + fireRate;
 				var bullet = Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 				GetComponent<AudioSource> ().Play ();
-				Destroy (bullet, 1.8f);
+				Destroy (bullet, 1.2f);
 			}
 		}
 
@@ -92,7 +92,7 @@ namespace CubeSpaceFree
 				nextFire = Time.time + fireRate;
 				var bullet = Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 				GetComponent<AudioSource> ().Play ();
-				Destroy (bullet, 1.8f);
+				Destroy (bullet, 1.2f);
 			}
 		}
 
