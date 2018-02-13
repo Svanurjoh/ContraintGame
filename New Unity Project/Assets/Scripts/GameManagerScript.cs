@@ -16,6 +16,7 @@ public class GameManagerScript : MonoBehaviour
 	public TextMeshProUGUI scoreText;
 	public TextMeshProUGUI dieText;
 	public int starsCollected;
+	private int starsSpawned = 0;
 
 	private float spawnTimer = 0f;
 	private int spawnCounter = 0;
@@ -83,10 +84,14 @@ public class GameManagerScript : MonoBehaviour
 	public void starCollected()
 	{
 		starsCollected++;
-		Debug.Log (starsCollected);
 	}
 
 	public int getStarsCollected()
+	{
+		return starsCollected;
+	}
+
+	public int getStarsSpawned()
 	{
 		return starsCollected;
 	}

@@ -48,7 +48,11 @@ namespace CubeSpaceFree
             // if keyboard direction key is pressed
 			if (moveHorizontal != 0 || moveVertical != 0)
             {
-				myRigidbody.velocity = new Vector3(moveHorizontal, moveVertical, 0.0f) * speed;
+				if (GMS.getStarsCollected() % 2 == 0) {
+					myRigidbody.velocity = new Vector3 (moveHorizontal, moveVertical, 0.0f) * speed;
+				} else {
+					myRigidbody.velocity = new Vector3(moveVertical, moveHorizontal, 0.0f) * speed;
+				}
             }
 			transform.position = new Vector3 (
 				Mathf.Clamp (transform.position.x, boundary.xMin, boundary.xMax),

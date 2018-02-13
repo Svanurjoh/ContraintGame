@@ -33,15 +33,17 @@ public class StarsScript : MonoBehaviour {
 
 	private void checkSpeed()
 	{
-		if (GMS.getStarsCollected () == 0) {
+		if (GMS.getStarsSpawned () == 0) {
 			speed = 0.1f;
-		} else if (GMS.getStarsCollected () == 1) {
+		} else if (GMS.getStarsSpawned () == 1) {
 			speed = 0.15f;
-		} else if (GMS.getStarsCollected () == 2) {
+		} else if (GMS.getStarsSpawned () == 2) {
 			speed = 0.2f;
-		} else if (GMS.getStarsCollected () == 3) {
+		} else if (GMS.getStarsSpawned () == 3) {
 			speed = 0.25f;
-		} else
+		} else if (GMS.getStarsSpawned () == 4) {
 			speed = 0.3f;
+		} else
+			speed = 0.35f;
 	}
 }
