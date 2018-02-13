@@ -37,8 +37,6 @@ public class EnemyScript : MonoBehaviour {
 		if(other.CompareTag("Player")) 
 		{
 			isDead = true;
-
-			Debug.Log("Hit player");
 			var exp = Instantiate (enemyExplosion, transform.position + new Vector3(0, 1.3f, 0), transform.rotation);
 			Destroy (exp, 1f);
 			var shipExp = Instantiate (shipExplosion, transform.position, transform.rotation);

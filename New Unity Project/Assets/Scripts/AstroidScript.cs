@@ -30,8 +30,6 @@ public class AstroidScript : MonoBehaviour
 			var exp = Instantiate (explosion, transform.position + new Vector3(0, 1.3f, 0), transform.rotation);
 			Destroy (exp, 1f);
 			other.gameObject.SetActive (false);
-			Debug.Log ("tri");
-			//Destroy (other.gameObject);
 		}
 		if (other.gameObject.tag == "Bullet") {
 			Destroy (other.gameObject);

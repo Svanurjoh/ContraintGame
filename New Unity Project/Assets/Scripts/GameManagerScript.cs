@@ -52,6 +52,7 @@ public class GameManagerScript : MonoBehaviour
 				GameObject s = Instantiate (starPrefab, spawnPoints[starSpawn].transform.position, starPrefab.transform.rotation) as GameObject;
 				spawnCounter = 0;
 				maxSpawns += 2;
+				starsSpawned++;
 				spawnCooldown -= 0.2f;
 			}
 				
@@ -93,7 +94,7 @@ public class GameManagerScript : MonoBehaviour
 
 	public int getStarsSpawned()
 	{
-		return starsCollected;
+		return starsSpawned;
 	}
 
 	public void checkForInput()
